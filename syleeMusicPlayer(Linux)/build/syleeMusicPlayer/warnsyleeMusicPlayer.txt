@@ -1,0 +1,26 @@
+missing module named 'org.python' - imported by pickle, /home/sylee/dev/heartpython/syleeMusicPlayer.py, xml.sax
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named 'java.lang' - imported by platform, /home/sylee/dev/heartpython/syleeMusicPlayer.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named Tkinter - imported by PIL._tkinter_finder, PIL.ImageTk, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named copy_reg - imported by cStringIO, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named cStringIO - imported by mutagen._compat, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named StringIO - imported by mutagen._compat, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named 'ctypes.macholib' - imported by ctypes.util, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named nt - imported by os, ntpath, shutil, pathlib, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named ce - imported by os, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named _winapi - imported by subprocess, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named _dummy_threading - imported by dummy_threading, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named org - imported by copy, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named winreg - imported by platform, mimetypes, vlc, /home/sylee/dev/heartpython/syleeMusicPlayer.py, urllib.request
+missing module named _winreg - imported by platform, vlc, /home/sylee/dev/heartpython/syleeMusicPlayer.py
+missing module named msvcrt - imported by subprocess, vlc, /home/sylee/dev/heartpython/syleeMusicPlayer.py, getpass
+missing module named 'PySide.QtCore' - imported by PIL.ImageQt
+missing module named 'PyQt4.QtCore' - imported by PIL.ImageQt
+missing module named 'PyQt5.QtCore' - imported by PIL.ImageQt
+missing module named pathlib2 - imported by PIL.Image
+missing module named cffi - imported by PIL.ImageTk, PIL.Image, PIL.PyAccess
+missing module named __builtin__ - imported by PIL.Image

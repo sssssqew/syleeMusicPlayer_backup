@@ -1,0 +1,38 @@
+missing module named resource - imported by posix, C:\heartpython\syleeMusicPlayer.py
+missing module named posix - imported by os, C:\heartpython\syleeMusicPlayer.py
+missing module named _posixsubprocess - imported by subprocess, C:\heartpython\syleeMusicPlayer.py
+missing module named 'org.python' - imported by pickle, C:\heartpython\syleeMusicPlayer.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, C:\heartpython\syleeMusicPlayer.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, C:\heartpython\syleeMusicPlayer.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, C:\heartpython\syleeMusicPlayer.py
+missing module named _winreg - imported by platform, vlc, C:\heartpython\syleeMusicPlayer.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, C:\heartpython\syleeMusicPlayer.py
+missing module named 'java.lang' - imported by platform, C:\heartpython\syleeMusicPlayer.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, C:\heartpython\syleeMusicPlayer.py
+missing module named termios - imported by tty, vlc, C:\heartpython\syleeMusicPlayer.py, getpass
+missing module named grp - imported by tarfile, shutil, pathlib, C:\heartpython\syleeMusicPlayer.py
+missing module named org - imported by copy, C:\heartpython\syleeMusicPlayer.py
+missing module named pwd - imported by posixpath, tarfile, shutil, http.server, webbrowser, pathlib, C:\heartpython\syleeMusicPlayer.py, netrc, getpass
+missing module named ce - imported by os, C:\heartpython\syleeMusicPlayer.py
+missing module named _dummy_threading - imported by dummy_threading, C:\heartpython\syleeMusicPlayer.py
+missing module named cStringIO - imported by mutagen._compat
+missing module named copy_reg - imported by cStringIO
+missing module named StringIO - imported by mutagen._compat
+missing module named mutagen.id3.TPE1 - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.APIC - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TDRC - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TIT2 - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TALB - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.USLT - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TENC - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TRCK - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.TCON - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named mutagen.id3.COMM - imported by mutagen.id3, C:\heartpython\syleeMusicPlayer.py
+missing module named 'PySide.QtCore' - imported by PIL.ImageQt
+missing module named 'PyQt4.QtCore' - imported by PIL.ImageQt
+missing module named 'PyQt5.QtCore' - imported by PIL.ImageQt
+missing module named pathlib2 - imported by PIL.Image
+missing module named cffi - imported by PIL.ImageTk, PIL.Image, PIL.PyAccess
+missing module named __builtin__ - imported by PIL.Image
+missing module named Tkinter - imported by PIL.ImageTk
