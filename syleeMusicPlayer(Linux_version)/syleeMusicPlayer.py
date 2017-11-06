@@ -14,8 +14,10 @@ import random
 import timeit
 import time
 import threading
-# import tooltips
+import sys
 
+# set env variable for vlc module
+os.environ["VLC_PLUGIN_PATH"] = "/usr/lib/vlc/plugins/"
 
 class Song:
 	'''
@@ -30,9 +32,9 @@ class Song:
 		global info
 
 		mp3 = File(self.song_name)
-		art_name = os.path.splitext(self.song_name)[0] + ".jpg"
 
 		meta = {}
+		art_name = "music.png"
 		duration = mp3.info.length
 		pTimeMin = str(int(duration // 60))
 		pTimeSec = str(int(duration % 60))
@@ -44,16 +46,21 @@ class Song:
 			pTimeSec = "0" + pTimeSec
 
 		meta["재생시간"] = str(" : ".join([pTimeMin, pTimeSec]))
-		meta["가사"] = str(mp3.tags.getall("USLT")[0])
+		try:
+			meta["가사"] = str(mp3.tags.getall("USLT")[0])
+		except:
+			meta["가사"] = ""
 
 		for key in mp3.tags:
 			if key == "APIC:Cover" or key == "APIC:":
+				art_name = os.path.splitext(self.song_name)[0] + ".jpg"
 				artwork = mp3.tags[key].data
 				if not os.path.isfile(art_name):
 					with open(art_name, 'wb') as img:
 					   img.write(artwork)
 				else:
 					print("앨범 아트가 이미 존재합니다.")
+
 			if key == "TALB":
 				meta["앨범"] = str(mp3.tags[key])					
 
@@ -87,6 +94,7 @@ class Play:
 	def __init__(self):
 		self.dir = 0
 		self.p = None
+		self.t = None
 
 	def get_songs_list(self):
 		cur_dir = os.getcwd()
@@ -107,51 +115,46 @@ class Play:
 
 	def load_track(self):  
 		self.line = 0
-		# song_name = songs_track[pos]
-		load_song = play_list.get(pos)
-		for idx, file_name in enumerate(songs_track):
-			song = os.path.basename(file_name)
-			if song == load_song: 
-				song = Song(file_name)	
-				self.duration, self.len_letters = song.get_metadata()
-				self.p = vlc.MediaPlayer(file_name)
+		idx, filename = find_song(pos)
+		song = Song(filename)	
+		self.duration, self.len_letters = song.get_metadata()
+		self.p = vlc.MediaPlayer(filename)
 
 	def playing(self):
-		time_per_letter = self.duration / self.len_letters
-		# print("playing...")
-	
-		if self.p.is_playing():
-			self.line += 0.1
-			# print(str(self.line))
-			# print("재생시간 : {}".format(self.duration))
-			# print("글자수 : {}".format(self.len_letters))
-			# print("글자당 시간간격 : {}".format(time_per_letter))
-			song_info.see(str(round(self.line, 1)))
-			threading.Timer(time_per_letter+0.1, self.playing).start()
+		if self.p: print(self.p.get_state())
+		
+		if isEnded:
+			if self.p: self.p.stop()
+			if self.t: self.t.cancel()
+		else:
+			if self.p and str(self.p.get_state()) == "State.Ended":
+				self.t.cancel()
+				self.next_song()
+				self.play_music()
+			else:
+				self.t = threading.Timer(2, self.playing)
+				self.t.start()
 
 	def play_music(self):
-		self.p.play()
+		if self.p: self.p.play()
 		p_btn.configure(text="Pause", command=self.pause_music)
-		# self.playing()
+		self.playing()
 
 	def pause_music(self):
-		self.p.pause()
+		if self.p: self.p.pause()
 		p_btn.configure(text="Play", command=self.play_music)
 	
 	def ch_img(self):
 		global img_copy
+		print("art name : {}".format(art_name))
+		# idx, filename = find_song(pos)
+		# img_path = os.path.splitext(filename)[0] + ".jpg"
+		img = Image.open(art_name).resize((width, height))
+		photo = ImageTk.PhotoImage(img)
+		img_copy = img.copy()
 
-		ch_song = play_list.get(pos)
-		for idx, file_name in enumerate(songs_track):
-			song = os.path.basename(file_name)
-			if song == ch_song: 
-				img_path = os.path.splitext(file_name)[0] + ".jpg"
-				img = Image.open(img_path).resize((width, height))
-				photo = ImageTk.PhotoImage(img)
-				img_copy = img.copy()
-
-				album_cover.configure(image=photo)
-				album_cover.image = photo
+		album_cover.configure(image=photo)
+		album_cover.image = photo
 
 	def ch_focus(self):
 		# enable focus
@@ -178,13 +181,16 @@ class Play:
 
 	# problem
 	def ch_dir(self):
-		global pos
-		play_list.selection_clear(pos)
-		pos = (pos + self.dir) % search_size
-		self.ch_song()
-		print(play_list.get(pos))
-		# scroll up or down
-		play_list.see(pos)
+		if search_size != 0:
+			global pos
+			play_list.selection_clear(pos)
+			pos = (pos + self.dir) % search_size
+			self.ch_song()
+			print(play_list.get(pos))
+			# scroll up or down
+			play_list.see(pos)
+		else:
+			print("no songs...")
 		
 
 # callback for user events
@@ -215,6 +221,16 @@ def show_info(e):
 	print("show info")
 	
 
+def find_song(needle):
+	f_song = play_list.get(needle)
+
+	for i, f_name in enumerate(songs_track):
+		song = os.path.basename(f_name)
+		if song == f_song: 
+			break
+
+	return i, f_name
+
 def click_song(e):
 	global pos
 	play_list.selection_clear(pos)
@@ -226,16 +242,11 @@ def click_song(e):
 def remove_song(e):
 	global pos
 	del_idx = play_list.nearest(e.y)
-	del_song = play_list.get(del_idx)
+	idx, filename = find_song(del_idx)
 	play_list.delete(del_idx)
+	print("{}이 삭제되었습니다.".format(songs_track[idx]))
+	del songs_track[idx]
 
-	for idx, file_name in enumerate(songs_track):
-		song = os.path.basename(file_name)
-		if song == del_song: 
-			print("{} 이 삭제되었습니다.".format(song))
-			del songs_track[idx]
-			break
-	
 	if pos > del_idx:
 		pos = pos -1
 	elif pos == del_idx:
@@ -281,18 +292,25 @@ def add_songs():
 				play_list.insert("end", song)
 				songs_track.append(file_name)
 				search_size += 1
+				break
 
 	print("size : {}".format(search_size))
 	print("open")
 
+# terminate timer and music
+def on_closing():
+	global isEnded
+	isEnded = True
+	print("program closed...")
+	window.destroy()
 
-	
 
 # set album size
 width = 500
 height = 500
+isEnded = False
 
-ext = ['mp3']
+ext = ['mp3', 'flac']
 songs_track = []
 art_name = "music.png" 
 info = "Double click to view songs list !!"
@@ -347,10 +365,19 @@ next_btn.pack(side=LEFT, padx=5, pady=5)
 add_btn = Button(btn_frame, text="Add", fg="ivory2", bg="#383a39", font="Verdana 10 bold", command=add_songs)
 add_btn.pack(side=LEFT, padx=5, pady=5)
 
+search_frame = Frame()
+search_frame.pack(fill="none", expand=True, pady=5)
+
 # search bar
-search = Entry(window, borderwidth=0, highlightthickness=0, width=20, font=("Helvetica", 12, "bold"))
-search.pack(pady=10)
+search = Entry(search_frame, borderwidth=0, highlightthickness=0, width=20, font=("Helvetica", 12, "bold"))
+search.pack(side=LEFT, padx=5, pady=5)
 search.bind("<Key>", search_songs)
+
+# search icon
+img2 = Image.open("search.png").resize((20, 20))
+photo2 = ImageTk.PhotoImage(img2)
+search_icon = Label(search_frame, image=photo2)
+search_icon.pack(side=LEFT, padx=5, pady=5)
 
 # display info.
 song_info = Text(window, wrap=None, bg="black", fg="#383a39", font=("Helvetica", 12, "bold"), borderwidth=0, highlightthickness=0, pady=15)
@@ -362,8 +389,9 @@ song_info.bind('<Double-Button-1>', show_list)
 song_info.bind("<Enter>", ch_bg_night)
 song_info.bind("<Leave>", ch_bg_day)
 
-# window.update()
-# tip = tooltips.ListboxToolTip(song_info, ["* Double click *", "Show songs list"])
+window.protocol("WM_DELETE_WINDOW", on_closing)
 
 # process events
 window.mainloop()
+
+
