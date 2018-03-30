@@ -1,4 +1,5 @@
 # syleeMusicPlayer_backup
+# 로컬 PC에서 동작하는 MP3 플레이어 앱에 대한 소스코드입니다. 
 
 freezing python desktop application with pyinstaller
 
