@@ -1,7 +1,8 @@
 # syleeMusicPlayer_backup
-# 로컬 PC에서 동작하는 MP3 플레이어 앱에 대한 소스코드입니다. 
-
+```
+로컬 PC에서 동작하는 MP3 플레이어 앱에 대한 소스코드입니다. 
 freezing python desktop application with pyinstaller
+```
 
 1. 파이썬 3 설치 (3.5.2) - easy_install, pip3 등은 자동설치 됨(확인)
 - python, vlc 경로를 환경변수 시스템변수에 등록하기 (window)
