@@ -36,18 +36,15 @@ libvlc.dll
 libvlc.dylib
 libvlccore.dll
 ```
-
+```
 PS. 하나의 exe 파일을 생성하는 경우 window xp/7에서만 제대로 실행됨 
 PS. 클릭으로 EXE를 실행하기 전에 Command창에서 미리 실행해서 오류 메세지 확인 
 PS. 설치 패키지는 가능한 Virtual환경에서 pip3 requirements.txt로 관리하기
 PS. 대부분의 패키지나 모듈은 site-packages 폴더 내에 존재함
 PS. main libvlc error: No plugins found! Check your VLC installation (Linux)
-```
 sudo ln -s / /livefs.squashfs
 export VLC_PLUGIN_PATH=/usr/lib/vlc/plugins/
-```
 PS. ImportError: No module named _tkinter_finder (Linux)
-```
 spec 파일 hidden_imports에 'PIL._tkinter_finder' 추가 
 ```
 
