@@ -4,13 +4,20 @@
 freezing python desktop application with pyinstaller
 ```
 ```
-[설치 및 사용 가이드]
+[설치 가이드]
 
 git clone https://github.com/sssssqew/syleeMusicPlayer_backup.git
 syleeMusicPlayer(noDBVersion_window7_32_singlefile) 폴더로 이동
 dist 폴더로 이동
 syleeMusicPlayer 응용프로그램 실행
+
+[사용 가이드]
 [Add]버튼으로 음원 추가
+[가사보기] 마우스 좌측버튼 + 스크롤 동시클릭
+[다시 목록보기] 마우스 좌측버튼 더블클릭
+[목록 스크롤하기] 마우스 우측버튼 드래그
+[현재곡 삭제하기] 마우스 우측버튼 더블클릭
+
 ```
 
 <div style="display: flex;">
