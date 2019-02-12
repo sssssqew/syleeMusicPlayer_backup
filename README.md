@@ -12,11 +12,7 @@ syleeMusicPlayer 응용프로그램 실행
 [Add]버튼으로 음원 추가
 ```
 
-.schreenshots {
-  display: flex;
-}
-
-<div class="schreenshots">
+<div style="display: flex;">
 <img src="https://user-images.githubusercontent.com/9676553/52618132-4b752b00-2ee1-11e9-8e65-ede4f8bf829a.PNG" width="40%">
 <img src="https://user-images.githubusercontent.com/9676553/52618134-4e701b80-2ee1-11e9-9ca2-752b5c1f9081.PNG" width="40%">
 </div>
