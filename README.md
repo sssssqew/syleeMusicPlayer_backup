@@ -5,6 +5,7 @@ freezing python desktop application with pyinstaller
 ```
 ```
 [설치 및 사용 가이드]
+
 git clone https://github.com/sssssqew/syleeMusicPlayer_backup.git
 syleeMusicPlayer(noDBVersion_window7_32_singlefile) 폴더로 이동
 dist 폴더로 이동
