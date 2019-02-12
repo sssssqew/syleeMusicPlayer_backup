@@ -9,7 +9,7 @@ git clone https://github.com/sssssqew/syleeMusicPlayer_backup.git
 syleeMusicPlayer(noDBVersion_window7_32_singlefile) 폴더로 이동
 dist 폴더로 이동
 syleeMusicPlayer 응용프로그램 실행
-[add]버튼으로 음원 추가
+[Add]버튼으로 음원 추가
 ```
 
 ![2](https://user-images.githubusercontent.com/9676553/52618132-4b752b00-2ee1-11e9-8e65-ede4f8bf829a.PNG)
