@@ -12,8 +12,8 @@ syleeMusicPlayer 응용프로그램 실행
 [Add]버튼으로 음원 추가
 ```
 
-![2](https://user-images.githubusercontent.com/9676553/52618132-4b752b00-2ee1-11e9-8e65-ede4f8bf829a.PNG){: width="100" height="100"}
-![3](https://user-images.githubusercontent.com/9676553/52618134-4e701b80-2ee1-11e9-9ca2-752b5c1f9081.PNG){: width="100" height="100"}
+![2](https://user-images.githubusercontent.com/9676553/52618132-4b752b00-2ee1-11e9-8e65-ede4f8bf829a.PNG){: width="50%" height="50%"}
+![3](https://user-images.githubusercontent.com/9676553/52618134-4e701b80-2ee1-11e9-9ca2-752b5c1f9081.PNG){: width="50%" height="50%"}
 
 1. 파이썬 3 설치 (3.5.2) - easy_install, pip3 등은 자동설치 됨(확인)
 ```
