@@ -3,6 +3,14 @@
 로컬 PC에서 동작하는 MP3 플레이어 앱에 대한 소스코드입니다. 
 freezing python desktop application with pyinstaller
 ```
+```
+[설치 및 사용 가이드]
+git clone https://github.com/sssssqew/syleeMusicPlayer_backup.git
+syleeMusicPlayer(noDBVersion_window7_32_singlefile) 폴더로 이동
+dist 폴더로 이동
+syleeMusicPlayer 응용프로그램 실행
+[add]버튼으로 음원 추가
+```
 
 1. 파이썬 3 설치 (3.5.2) - easy_install, pip3 등은 자동설치 됨(확인)
 ```
